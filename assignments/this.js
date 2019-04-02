@@ -13,14 +13,49 @@
 
 // code example for Window Binding
 
+console.log(this);
+
 // Principle 2
 
 // code example for Implicit Binding
+
+const Planets = {
+  name: "Earth",
+  size: 3963,
+  palnetSize: function() {
+    console.log(`Planet ${this.name} has a radius of ${this.size} miles.`);
+  }
+};
+
+Planets.palnetSize();
 
 // Principle 3
 
 // code example for New Binding
 
+function Runners(runner) {
+  (this.runner = runner), (this.greet = "My name is ");
+  this.name = function() {
+    console.log(this.greet + this.runner);
+  };
+}
+
+const fritz = new Runners("Fritz");
+
+fritz.name();
+
 // Principle 4
 
 // code example for Explicit Binding
+
+const nearPlanet = {
+  name: "Venus"
+};
+
+const size = 3760;
+
+function desciption(size) {
+  console.log(`The radius of ${this.name} is aprox ${size} miles`);
+}
+
+desciption.call(nearPlanet, size);
