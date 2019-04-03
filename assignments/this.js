@@ -34,15 +34,16 @@ Planets.palnetSize();
 // code example for New Binding
 
 function Runners(runner) {
-  (this.runner = runner), (this.greet = "My name is ");
-  this.name = function() {
+  this.runner = runner;
+  this.greet = "My name is ";
+  this.sayName = function() {
     console.log(this.greet + this.runner);
   };
 }
 
 const fritz = new Runners("Fritz");
 
-fritz.name();
+fritz.sayName();
 
 // Principle 4
 
