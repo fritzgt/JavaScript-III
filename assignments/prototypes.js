@@ -76,6 +76,41 @@ Humanoid.prototype.greet = function() {
 };
 
 // console.dir(Humanoid.prototype);
+
+// Stretch task:
+
+//Villain would take away health poinst when calling the method
+function Villain(VillainAttrs) {
+  Humanoid.call(this, VillainAttrs); //Binding this Humanoid
+}
+
+//Linking the Villain Prototype to the Humanoid Prototype
+Villain.prototype = Object.create(Humanoid.prototype);
+
+// Method for Villain to takeaway health points
+Humanoid.prototype.negHealth = function() {
+  let currentHealth = (this.healthPoints -= 1);
+
+  if (currentHealth > 0) {
+    return `You lost a healthPoint, your current health is: ${currentHealth}`;
+  } else {
+    return `Your are destroyed!`;
+  }
+};
+
+//Hero would add health poinst when calling the method
+function Hero(HeroAttr) {
+  Humanoid.call(this, HeroAttr); //Binding this Humanoid
+}
+
+//Linking the Villain Prototype to the Humanoid Prototype
+Hero.prototype = Object.create(Humanoid.prototype);
+
+// Method for Villain to takeaway health points
+Humanoid.prototype.plusHealth = function() {
+  return (this.healthPoints += 1);
+};
+
 /*
  * Inheritance chain: GameObject -> CharacterStats -> Humanoid
  * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
@@ -141,3 +176,7 @@ console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
 // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+console.log(swordsman.negHealth());
+
+console.log(swordsman.plusHealth());
